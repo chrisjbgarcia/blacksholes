@@ -1,0 +1,23 @@
+
+# Black-Scholes Option Value
+# Call value is returned in values[1], put in values[2]
+
+
+blackscholes <- function(S, K, rf, T, sigma) {
+  values <- c(2)
+  
+  d1 <- (log(S/K)+(rf+sigma^2/2)*T)/(sigma*sqrt(T))
+  d2 <- d1 - sigma * sqrt(T)
+  
+  #pnorm - gives the cumulative probability distribution at a specified value of x
+  
+  #price of call
+  values[1] <- S*pnorm(d1) - K*exp(-rf*T)*pnorm(d2)
+  
+  #price of put
+  values[2] <- K*exp(-rf*T) * pnorm(-d2) - S*pnorm(-d1)
+  
+  values
+}
+
+blackscholes(64.7,120,.0044,6,.60)
