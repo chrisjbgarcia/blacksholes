@@ -21,3 +21,4 @@ blackscholes <- function(S, K, rf, T, sigma) {
 }
 
 blackscholes(64.7,120,.0044,6,.60)
+
